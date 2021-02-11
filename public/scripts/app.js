@@ -1,17 +1,22 @@
 'use strict';
 
+var app = {
+    title: 'Indecision App',
+    subTitle: 'Put your life in the hands of a computer.'
+};
+
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Indecision App'
+        app.title
     ),
     React.createElement(
         'p',
         null,
-        'This is some info'
+        app.subTitle
     ),
     React.createElement(
         'ol',
@@ -29,26 +34,34 @@ var template = React.createElement(
     )
 );
 
+var user = {
+    name: 'Vishnu C Prasad',
+    age: 20,
+    location: 'Kanjirappally'
+};
+
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Vishnu C Prasad'
+        user.name.toUpperCase()
     ),
     React.createElement(
         'p',
         null,
-        'Age: 20'
+        'Age: ',
+        user.age
     ),
     React.createElement(
         'p',
         null,
-        'Location: Kanjirappally'
+        'Location: ',
+        user.location
     )
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
