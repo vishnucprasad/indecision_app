@@ -1,8 +1,8 @@
 class IndecisionApp extends React.Component {
   render() {
-    const title = 'Indecision App';
-    const subTitle = 'Put your life in the hands of a computer';
-    const options = ['One', 'Two', 'Three'];
+    const title = "Indecision App";
+    const subTitle = "Put your life in the hands of a computer";
+    const options = ["One", "Two", "Three"];
 
     return (
       <div>
@@ -27,20 +27,29 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+  handlePick() {
+    alert("Handle Pick");
+  }
   render() {
     return (
       <div>
-        <button>What should I do?</button>
+        <button onClick={this.handlePick}>What should I do?</button>
       </div>
     );
   }
 }
 
 class Options extends React.Component {
+  handleRemoveAll() {
+    alert("Handle Remove All");
+  }
   render() {
     return (
       <div>
-        {this.props.options.map((option) => <Option key={option} optionText={option} />)}
+        <button onClick={this.handleRemoveAll}>Remove All</button>
+        {this.props.options.map((option) => (
+          <Option key={option} optionText={option} />
+        ))}
         <Option />
       </div>
     );
@@ -58,10 +67,22 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const option = e.target.elements.option.value.trim();
+
+    if (option) {
+      alert(option);
+    }
+  }
   render() {
     return (
       <div>
-        <p>AddOption component here</p>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="option" />
+          <button type="submit">Add Option</button>
+        </form>
       </div>
     );
   }
