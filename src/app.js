@@ -9,6 +9,28 @@ class IndecisionApp extends React.Component {
       options: props.options,
     };
   }
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem("options");
+      const options = JSON.parse(json);
+
+      if (options) {
+        this.setState(() => {
+          return {
+            options,
+          };
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  componentDidUpdate(prevprops, prevState) {
+    if (prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem("options", json);
+    }
+  }
   handleDeleteOptions() {
     this.setState(() => {
       return {
@@ -19,8 +41,8 @@ class IndecisionApp extends React.Component {
   handleDeleteOption(optionToRemove) {
     this.setState((state) => {
       return {
-        options: state.options.filter((option) => option !== optionToRemove)
-      }
+        options: state.options.filter((option) => option !== optionToRemove),
+      };
     });
   }
   handlePick() {
@@ -94,6 +116,7 @@ const Options = (props) => {
   return (
     <div>
       <button onClick={props.handleDeleteOptions}>Remove All</button>
+      {props.options.length === 0 && <p>Please add an option to get started.</p>}
       {props.options.map((option) => (
         <Option
           key={option}
@@ -108,7 +131,7 @@ const Options = (props) => {
 const Option = (props) => {
   return (
     <div>
-      <p>{props.optionText}</p>
+      {props.optionText}
       <button
         onClick={(e) => {
           props.handleDeleteOption(props.optionText);
@@ -140,7 +163,9 @@ class AddOption extends React.Component {
       };
     });
 
-    e.target.elements.option.value = '';
+    if (!error) {
+      e.target.elements.option.value = "";
+    }
   }
   render() {
     return (
