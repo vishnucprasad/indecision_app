@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "live-server public/",
     "build": "webpack --watch",
-    "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+    "dev-server": "webpack serve"
   },
   "author": "Vishnu C Prasad",
   "license": "ISC",
@@ -19,7 +19,8 @@
     "live-server": "^1.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "webpack": "^5.24.2"
+    "webpack": "^5.24.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "devDependencies": {
     "webpack-cli": "^4.5.0"
