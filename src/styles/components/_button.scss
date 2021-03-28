@@ -6,7 +6,7 @@
     color: #ffffff;
     font-weight: bold;
     font-size: $l-size;
-    margin-bottom: $xl-size;
+    margin-bottom: $m-size;
     padding: 2.4rem;
     outline: none;
     width: 100%;
@@ -14,6 +14,12 @@
 
 .big-button:disabled {
     opacity: 0.5;   
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .big-button {
+        margin-bottom: $xl-size;
+    }
 }
 
 // Button
