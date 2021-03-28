@@ -8,6 +8,7 @@
     font-size: $l-size;
     margin-bottom: $xl-size;
     padding: 2.4rem;
+    outline: none;
     width: 100%;
 }
 
@@ -22,6 +23,7 @@
     border-bottom: 0.3rem solid darken($purple, 10%);
     color: #ffffff;
     font-weight: 500;
+    outline: none;
     padding: $s-size;
 }
 
